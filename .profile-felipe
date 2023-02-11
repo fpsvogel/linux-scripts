@@ -1,0 +1,25 @@
+# To use, put this line at the end of ~/.profile:
+# source ./<relative path>/.profile-felipe
+
+# TODO:
+# in /boot/grub/grub.cfg, after efi platform: set timeout=2
+
+# Increase mouse pointer speed.
+ruby_path=/home/felipe/.rbenv/shims/ruby
+inputs=$(xinput --list --short)
+mouse_id=$(${ruby_path} -e 'puts ARGV[0].match(/Logitech M510\s+id=(\d+)/).captures.first' "${inputs}")
+speed=2.5
+xinput set-prop $mouse_id "Coordinate Transformation Matrix" $speed, 0, 0, 0, $speed, 0, 0, 0, 1
+
+# Increase mouse scroll speed, fast scroll with Ctrl+scroll, and remap Alt+scroll to Ctrl+scroll.
+# Adapted from https://io.bikegremlin.com/11541/linux-mouse-scroll-speed/
+cat >~/.imwheelrc<<EOF
+".*"
+None,      Up,   Button4, 9
+None,      Down, Button5, 9
+Control_L, Up,   Button4, 100
+Control_L, Down, Button5, 100
+Alt_L,     Up,   Control_L|Button4
+Alt_L,     Down, Control_L|Button5
+EOF
+imwheel -b "4 5" -kill
