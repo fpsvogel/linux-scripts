@@ -4,6 +4,11 @@
 # TODO:
 # in /boot/grub/grub.cfg, after efi platform: set timeout=2
 
+# Disable all wake events besides the power button. This is to stop my cats
+# waking the computer when they walk over the keyboard.
+# From https://bbs.archlinux.org/viewtopic.php?pid=1607915#p1607915
+sudo sh -c "echo XHC > /proc/acpi/wakeup"
+
 # Increase mouse pointer speed.
 ruby_path=/home/felipe/.rbenv/shims/ruby
 inputs=$(xinput --list --short)
