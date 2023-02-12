@@ -1,5 +1,5 @@
 # To use, put this line at the end of ~/.bashrc:
-# source ~/<relative path>/.bashrc-felipe
+# source ~/<relative path>/.bashrc_felipe
 
 # Syntactic sugar for ANSI escape sequences
 txtblk='\e[0;30m' # Black - Regular
