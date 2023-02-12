@@ -7,11 +7,14 @@
 # Disable all wake events besides the power button. This is to stop my cats
 # waking the computer when they walk over the keyboard.
 # From https://bbs.archlinux.org/viewtopic.php?pid=1607915#p1607915
-sudo sh -c "echo XHC > /proc/acpi/wakeup"
+# To prevent .profile from showing an error message about entering a password,
+# run `sudo vsudo` and add this line:
+#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/disable_wake_events
+sudo ./scripts/disable_wake_events
 
 # Run the lower_brightness script in the background.
 # TODO: explore this one more: https://unix.stackexchange.com/a/449013
-./scripts/lower_brightness.sh &
+./scripts/lower_brightness &
 
 # Increase mouse pointer speed.
 ruby_path=/home/felipe/.rbenv/shims/ruby
