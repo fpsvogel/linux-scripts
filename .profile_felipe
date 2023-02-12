@@ -4,9 +4,9 @@
 # Disable all wake events besides the power button. This is to stop my cats
 # waking the computer when they walk over the keyboard.
 # To prevent .profile from showing an error message about entering a password,
-# run `sudo vsudo` and add this line:
+# run `sudo visudo` and add this line:
 #   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/disable_wake_events
-sudo ./scripts/.profile/disable_wake_events
+sudo ~/scripts/.profile/disable_wake_events
 
 # Upon unlocking after wake, lower the laptop screen brightness because it
 # mysteriously switches back to full brightness at that point. I use an
