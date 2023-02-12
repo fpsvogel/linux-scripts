@@ -1,5 +1,9 @@
 #!/home/felipe/.rbenv/shims/ruby
 
+# This script tranforms the line at the cursor into a reading.csv row.
+# By mapping this script to a keyboard shortcut, entering a new row
+# becomes just a matter of filling in a few blank columns.
+
 # Sleep a bit because the shortcut key needs to have been released first.
 sleep 0.2
 
