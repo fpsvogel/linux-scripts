@@ -10,4 +10,5 @@ Alt_L,     Up,   Control_L|Button4
 Alt_L,     Down, Control_L|Button5
 EOF
 
-imwheel -b "4 5" -kill
+# Suppress output and error messages. (Imwheel outputs an INFO message.)
+imwheel -b "4 5" -kill &>/dev/null
