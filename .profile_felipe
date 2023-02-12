@@ -9,6 +9,10 @@
 # From https://bbs.archlinux.org/viewtopic.php?pid=1607915#p1607915
 sudo sh -c "echo XHC > /proc/acpi/wakeup"
 
+# Run the lower_brightness script in the background.
+# TODO: explore this one more: https://unix.stackexchange.com/a/449013
+./scripts/lower_brightness.sh &
+
 # Increase mouse pointer speed.
 ruby_path=/home/felipe/.rbenv/shims/ruby
 inputs=$(xinput --list --short)
