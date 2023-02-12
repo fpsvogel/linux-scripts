@@ -1,0 +1,13 @@
+# Adapted from https://io.bikegremlin.com/11541/linux-mouse-scroll-speed/
+
+cat >~/.imwheelrc<<EOF
+".*"
+None,      Up,   Button4, 9
+None,      Down, Button5, 9
+Control_L, Up,   Button4, 100
+Control_L, Down, Button5, 100
+Alt_L,     Up,   Control_L|Button4
+Alt_L,     Down, Control_L|Button5
+EOF
+
+imwheel -b "4 5" -kill

@@ -1,0 +1,3 @@
+# From https://bbs.archlinux.org/viewtopic.php?pid=1607915#p1607915
+
+sh -c "echo XHC > /proc/acpi/wakeup"

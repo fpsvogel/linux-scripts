@@ -1,37 +1,25 @@
 # To use, put this line at the end of ~/.profile:
-# source ./<relative path>/.profile_felipe
-
-# TODO:
-# in /boot/grub/grub.cfg, after efi platform: set timeout=2
+#   source ./<relative path>/.profile_felipe
 
 # Disable all wake events besides the power button. This is to stop my cats
 # waking the computer when they walk over the keyboard.
-# From https://bbs.archlinux.org/viewtopic.php?pid=1607915#p1607915
 # To prevent .profile from showing an error message about entering a password,
 # run `sudo vsudo` and add this line:
 #   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/disable_wake_events
-sudo ./scripts/disable_wake_events
+sudo ./scripts/.profile/disable_wake_events
 
-# Run the lower_brightness script in the background.
-# TODO: explore this one more: https://unix.stackexchange.com/a/449013
-./scripts/lower_brightness &
+# Upon unlocking after wake, lower the laptop screen brightness because it
+# mysteriously switches back to full brightness at that point. I use an
+# external monitor as my primary, and I prefer to keep the unused laptop
+# monitor at low brightness.
+./scripts/.profile/lower_brightness &
 
 # Increase mouse pointer speed.
-ruby_path=/home/felipe/.rbenv/shims/ruby
-inputs=$(xinput --list --short)
-mouse_id=$(${ruby_path} -e 'puts ARGV[0].match(/Logitech M510\s+id=(\d+)/).captures.first' "${inputs}")
-speed=2.5
-xinput set-prop $mouse_id "Coordinate Transformation Matrix" $speed, 0, 0, 0, $speed, 0, 0, 0, 1
+source ./scripts/.profile/increase_pointer_speed
 
 # Increase mouse scroll speed, fast scroll with Ctrl+scroll, and remap Alt+scroll to Ctrl+scroll.
-# Adapted from https://io.bikegremlin.com/11541/linux-mouse-scroll-speed/
-cat >~/.imwheelrc<<EOF
-".*"
-None,      Up,   Button4, 9
-None,      Down, Button5, 9
-Control_L, Up,   Button4, 100
-Control_L, Down, Button5, 100
-Alt_L,     Up,   Control_L|Button4
-Alt_L,     Down, Control_L|Button5
-EOF
-imwheel -b "4 5" -kill
+source ./scripts/.profile/increase_scroll_speed
+
+# TODO: If boot menu timeout reverts to 30s, edit /boot/grub/grub.cfg after efi platform:
+#   set timeout=2
+# Automate this here if it needs to be re-applied repeatedly.
