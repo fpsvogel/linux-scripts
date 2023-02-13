@@ -14,7 +14,7 @@ sudo ~/scripts/.profile/disable_wake_events
 # monitor at low brightness.
 # run `sudo visudo` and add this line:
 #   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/.profile/lower_brightness
-sudo ~/scripts/.profile/lower_brightness &
+~/scripts/.profile/lower_brightness &
 
 # Increase mouse pointer speed.
 source ./scripts/.profile/increase_pointer_speed
@@ -28,4 +28,3 @@ source ./scripts/.profile/increase_scroll_speed
 # NOTE: To add boot parameters, instead do:
 #   sudo nano /etc/default/grub
 #   sudo update-grub  # or grub-mkconfig -o /boot/grub/grub.cfg
-

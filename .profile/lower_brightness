@@ -1,14 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-# From https://unix.stackexchange.com/a/567213
-# TODO: explore this one more: https://unix.stackexchange.com/a/449013
+# From https://unix.stackexchange.com/a/449013
+# and https://github.com/gogama/lockheed/blob/main/lockheed#L206-L217
 
-dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver'" | \
-(
-  while true; do
-    read X
-    if echo $X | grep "boolean false" &> /dev/null; then
-      sleep 5; xdotool key XF86MonBrightnessDown
-    fi
+gdbus monitor -y -d org.freedesktop.login1 |
+  grep --line-buffered -o '<false>' |
+  while read -r; do
+    xdotool key XF86MonBrightnessDown
   done
-)
