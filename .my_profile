@@ -9,12 +9,6 @@
 #   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/.profile/disable_wake_events
 sudo ~/scripts/.profile/disable_wake_events
 
-# Upon unlocking after wake, lower the laptop screen brightness because it
-# mysteriously switches back to full brightness at that point. I use an
-# external monitor as my primary, and I prefer to keep the unused laptop
-# monitor at low brightness.
-~/scripts/.profile/lower_brightness &
-
 # Increase mouse pointer speed.
 source ./scripts/.profile/increase_pointer_speed
 
