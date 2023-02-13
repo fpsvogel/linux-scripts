@@ -1,5 +1,5 @@
 # To use, put this line at the end of ~/.profile:
-#   source ./<relative path>/.profile_felipe
+#   source ./<relative path>/.my_profile
 
 # Disable all wake events besides the power button. This is to stop my cats
 # waking the computer when they walk over the keyboard.
