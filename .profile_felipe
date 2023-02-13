@@ -5,14 +5,16 @@
 # waking the computer when they walk over the keyboard.
 # To prevent .profile from showing an error message about entering a password,
 # run `sudo visudo` and add this line:
-#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/disable_wake_events
+#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/.profile/disable_wake_events
 sudo ~/scripts/.profile/disable_wake_events
 
 # Upon unlocking after wake, lower the laptop screen brightness because it
 # mysteriously switches back to full brightness at that point. I use an
 # external monitor as my primary, and I prefer to keep the unused laptop
 # monitor at low brightness.
-./scripts/.profile/lower_brightness &
+# run `sudo visudo` and add this line:
+#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/.profile/lower_brightness
+sudo ~/scripts/.profile/lower_brightness &
 
 # Increase mouse pointer speed.
 source ./scripts/.profile/increase_pointer_speed
@@ -20,6 +22,10 @@ source ./scripts/.profile/increase_pointer_speed
 # Increase mouse scroll speed, fast scroll with Ctrl+scroll, and remap Alt+scroll to Ctrl+scroll.
 source ./scripts/.profile/increase_scroll_speed
 
-# TODO: If boot menu timeout reverts to 30s, edit /boot/grub/grub.cfg after efi platform:
-#   set timeout=2
+# TODO: If boot menu timeout reverts to 30s, edit the timeout for efi platform to set timeout=2:
+#   sudo nano /boot/grub/grub.cfg
 # Automate this here if it needs to be re-applied repeatedly.
+# NOTE: To add boot parameters, instead do:
+#   sudo nano /etc/default/grub
+#   sudo update-grub  # or grub-mkconfig -o /boot/grub/grub.cfg
+
