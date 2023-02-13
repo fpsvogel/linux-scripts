@@ -1,4 +1,5 @@
-# To use, put this line at the end of ~/.profile:
+# My startup scripts.
+# To use, add this line to ~/.profile:
 #   source ./<relative path>/.my_profile
 
 # Disable all wake events besides the power button. This is to stop my cats
@@ -12,8 +13,6 @@ sudo ~/scripts/.profile/disable_wake_events
 # mysteriously switches back to full brightness at that point. I use an
 # external monitor as my primary, and I prefer to keep the unused laptop
 # monitor at low brightness.
-# run `sudo visudo` and add this line:
-#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/.profile/lower_brightness
 ~/scripts/.profile/lower_brightness &
 
 # Increase mouse pointer speed.
