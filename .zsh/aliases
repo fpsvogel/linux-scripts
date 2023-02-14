@@ -1,29 +1,48 @@
-alias g="git"
-alias gs="git status"
-alias gl="git log --pretty=format:'%C(yellow)%h %C(cyan)%ad %Cgreen%an %Creset%s%C(brightred)%d' --date=short --graph"
-alias gpl="git pull"
-alias gps="git push"
-alias gm="git merge"
-alias gco="git checkout"
-alias gcp="git cherry-pick"
-alias gw="git switch"
-alias gr="git reset"
-alias grs="git restore"
-alias grv="git revert"
-alias gc="git commit"
-alias ga="git add"
-alias grf="git reflog"
-alias grb="git rebase"
-alias grh="git reset HEAD~"
-alias grha="git reset --hard"
-alias gb="git branch"
-alias grb="git rebase"
+# GIT
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gbda='git branch | grep -v "main" | xargs git branch -D'
+# or: 'git branch --no-color --merged | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete 2>/dev/null'
+alias gco='git checkout'
+alias gc='git commit'
+alias cm='git commit --all --message'
+alias gl='git log --pretty=format:"%C(yellow)%h %C(cyan)%ad %Cgreen%an %Creset%s%C(brightred)%d" --date=short --graph'
+alias gm='git merge'
+alias gpl='git pull'
+alias gps='git push'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
+alias grb='git rebase'
+alias grf='git reflog'
+alias gr='git reset'
+alias grh='git reset HEAD~'
+alias grha='git reset --hard'
+alias grs='git restore'
+alias grss='git restore -s main db/schema.rb'
+alias gst='git stash'
+alias gsp='git stash pop'
+alias gs='git status'
+alias gw='git switch'
+alias gwc='git switch --create'
+alias gskip='git update-index --skip-worktree config/database.yml'
 
-alias r="rails"
-alias rs="rails s"
-alias ns="npm run web_server"
-alias rc="rails c"
-alias rcd="rails c --sandbox"
+# POSTGRES
+alias postgres='psql -U postgres'
 
-alias bt="bin/bridgetown"
-alias bashrc="sudo nano ~/.bashrc"
+# RUBY
+alias bt='bin/bridgetown'
+
+# RAILS
+alias r='rails'
+alias rs='rails s'
+alias rc='rails c'
+alias rcv='rails c --sandbox'
+alias rmgt='rails db:migrate:primary RAILS_ENV=test'
+alias rmg='rails db:migrate:primary'
+alias rlog='tail -f log/development.log'
+alias -g rev='RAILS_ENV=development'
+alias -g rep='RAILS_ENV=production'
+alias -g ret='RAILS_ENV=test'
+
+# JS
+alias ns='npm run web_server'
