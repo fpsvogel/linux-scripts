@@ -6,4 +6,6 @@ source ~/scripts/.zsh/zsh_plugins
 
 source ~/scripts/.zsh/init_etc
 
+source ~/scripts/.zsh/key_bindings
+
 source ~/scripts/.zsh/aliases

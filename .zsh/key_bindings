@@ -1,0 +1,11 @@
+# Ctrl + backspace
+bindkey '^H' backward-kill-word
+
+# TODO: Fix this?
+# - Shift+Home/End don't work.
+# - It interferes with the zsh-autosuggestions plugin.
+# source ~/scripts/.zsh/big_key_bindings/shift_selection
+
+# TODO: Fix this?
+# - Mouse selection still requires Ctrl+C for copy.
+# source ~/scripts/.zsh/big_key_bindings/cut_copy_paste
