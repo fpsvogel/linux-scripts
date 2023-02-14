@@ -1,0 +1,30 @@
+# My Zsh plugins.
+# Essentially I've moved the plugins section of .zshrc over to
+# here so that I can easily apply them on a different machine.
+
+# Community plugins must first be installed.
+# - zsh-autosuggestions:
+#     https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
+# - zsh-syntax-highlighting:
+#     https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+
+eval $(thefuck --alias)
+
+# Zsh plugins.
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+plugins=(copybuffer copypath copyfile gitfast rake-fast sudo thefuck z zsh-autosuggestions zsh-navigation-tools)
+
+# TODO plugins to try later:
+# - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
+# - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-interactive-cd
+
+# Remap the sudo plugin to F4 F4
+bindkey -M emacs '^[OS^[OS' sudo-command-line
+bindkey -M vicmd '^[OS^[OS' sudo-command-line
+bindkey -M viins '^[OS^[OS' sudo-command-line
+
+source $ZSH/oh-my-zsh.sh
+
+# zsh-syntax-highlighting must be loaded at the end.
+source /home/felipe/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

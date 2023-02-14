@@ -9,6 +9,9 @@
 #   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/.profile/disable_wake_events
 sudo ~/scripts/.profile/disable_wake_events
 
+# Set keyboard repeat delay, because sometimes it inexplicably becomes longer.
+# settings set org.cinnamon.desktop.peripherals.keyboard delay 250
+
 # Increase mouse pointer speed.
 source ./scripts/.profile/increase_pointer_speed
 
