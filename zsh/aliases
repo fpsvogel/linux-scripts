@@ -1,3 +1,7 @@
+# ZSH PLUGINS
+alias cpp='copypath'
+alias cpf='copyfile'
+
 # GIT
 alias g='git'
 alias ga='git add'
