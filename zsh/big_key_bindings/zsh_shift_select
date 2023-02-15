@@ -115,9 +115,7 @@ function {
 		# x      '^[[1;6F'    '^[[1;4F'  end-of-buffer        # Shift + Ctrl/Option + End
 		x      '^[[1;3F'    '^[[1;4F'  end-of-buffer        # Alt + End
 
-    # For these to work, copy and paste must be remapped to Ctrl+C and Ctrl+V
-    # in Terminal, and (at least in Mint) interrupt will automatically be
-    # remapped to Ctrl+Shift+C.
+    # For Copy to work, the interrupt (default Ctrl+C) key binding is changed (see below).
     x       $'^X'       x          zle-clipboard-cut             # `Ctrl + X`
     x       $'^C'       x          zle-clipboard-copy            # `Ctrl + C`
     x       $'^V'       x          zle-clipboard-paste           # `Ctrl + V`
@@ -138,3 +136,6 @@ function {
 		bindkey -M shift-select ${terminfo[$kcap]:-$seq} $widget
 	done
 }
+
+# Change the interrupt key binding to Ctrl+D, to allow copying with Ctrl+C.
+stty intr "^D"
