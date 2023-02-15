@@ -1,8 +1,8 @@
+# Emacs shift-select mode: select text on the command line using Shift
+# as in many text editors, browsers, and other GUI programs.
+
 # Adapted from https://github.com/jirutka/zsh-shift-select
 # System clipboard integration weaved in from https://unix.stackexchange.com/a/634916
-
-# Emacs shift-select mode for Zsh - select text in the command line using Shift
-# as in many text editors, browsers and other GUI programs.
 
 # Move cursor to the end of the buffer.
 # This is an alternative to builtin end-of-buffer-or-history.
