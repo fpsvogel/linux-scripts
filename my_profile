@@ -1,22 +1,25 @@
 # My startup scripts.
-# To use, add this line to ~/.profile:
-#   source ./<relative path>/my_profile
+# To use, add this line to ~/.profile (assuming this is in "~/scripts"):
+#   source ./scripts/my_profile
+
+# The directory of this script.
+my_path=${0:a:h}
 
 # Disable all wake events besides the power button. This is to stop my cats
 # waking the computer when they walk over the keyboard.
 # To prevent .profile from showing an error message about entering a password,
 # run `sudo visudo` and add this line:
 #   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/profile/disable_wake_events
-sudo ~/scripts/profile/disable_wake_events
+sudo "${my_path}/profile/disable_wake_events"
 
-# TODO: set keyboard repeat delay, because sometimes it inexplicably becomes longer.
-# settings set org.cinnamon.desktop.peripherals.keyboard delay 250
+# Set keyboard repeat delay, because sometimes it inexplicably becomes longer.
+gsettings set org.cinnamon.desktop.peripherals.keyboard delay 300
 
 # Increase mouse pointer speed.
-source ./scripts/profile/increase_pointer_speed
+source "${my_path}/profile/increase_pointer_speed"
 
 # Increase mouse scroll speed, fast scroll with Ctrl+scroll, and remap Alt+scroll to Ctrl+scroll.
-source ./scripts/profile/increase_scroll_speed
+source "${my_path}/profile/increase_scroll_speed"
 
 # TODO: If boot menu timeout reverts to 30s, edit the timeout for efi platform to set timeout=2:
 #   sudo nano /boot/grub/grub.cfg
