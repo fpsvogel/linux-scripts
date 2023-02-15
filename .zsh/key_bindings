@@ -1,4 +1,0 @@
-# Ctrl + Backspace
-bindkey '^H' backward-kill-word
-
-source ~/scripts/.zsh/big_key_bindings/zsh_shift_select

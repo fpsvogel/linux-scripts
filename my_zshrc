@@ -1,0 +1,11 @@
+# My Zsh customizations.
+# To use, add this line to ~/.zshrc, replacing the plugins section and Zsh initialization:
+#   source ~/<relative path>/my_zshrc
+
+source ~/scripts/zsh/zsh_plugins
+
+source ~/scripts/zsh/init_etc
+
+source ~/scripts/zsh/key_bindings
+
+source ~/scripts/zsh/aliases
