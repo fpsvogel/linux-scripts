@@ -15,7 +15,7 @@ this_dir=~/scripts
 sudo "${this_dir}/profile/disable_wake_events"
 
 # Set keyboard repeat delay, because sometimes it inexplicably becomes longer.
-gsettings set org.cinnamon.desktop.peripherals.keyboard delay 300
+source "${this_dir}/profile/tweak_key_repeat_delay"
 
 # Increase mouse pointer speed.
 source "${this_dir}/profile/increase_pointer_speed"

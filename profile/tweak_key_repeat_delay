@@ -1,0 +1,2 @@
+value=$((300+$RANDOM%20))
+gsettings set org.cinnamon.desktop.peripherals.keyboard delay $value
