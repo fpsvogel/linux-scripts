@@ -137,5 +137,5 @@ function {
 	done
 }
 
-# Change the interrupt key binding to Ctrl+D, to allow copying with Ctrl+C.
-stty intr "^D"
+# Change the interrupt key binding to Ctrl+Z, to allow copying with Ctrl+C.
+stty intr "^Z"
