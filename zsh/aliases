@@ -1,3 +1,6 @@
+# GENERAL
+alias c='xclip -selection clipboard' # to copy output to clipboard: echo 'hi' | c
+
 # ZSH PLUGINS
 alias cpp='copypath'
 alias cpf='copyfile'
@@ -6,10 +9,12 @@ alias cpf='copyfile'
 alias g='git'
 alias ga='git add'
 alias gb='git branch'
+alias gcb='git_current_branch | xclip -selection clipboard'
 alias gbda='git branch | grep -v "main" | xargs git branch -D'
 # or: 'git branch --no-color --merged | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete 2>/dev/null'
 alias gco='git checkout'
 alias gc='git commit'
+alias gca='git commit --amend --no-edit'
 alias cm='git add .; git commit --message'
 alias cma='git add .; git commit --amend --no-edit'
 alias gl='git log --pretty=format:"%C(yellow)%h %C(cyan)%ad %Cgreen%an %Creset%s%C(brightred)%d" --date=short --graph'
@@ -48,6 +53,7 @@ alias rlog='tail -f log/development.log'
 alias -g rev='RAILS_ENV=development'
 alias -g rep='RAILS_ENV=production'
 alias -g ret='RAILS_ENV=test'
+alias spid='rm tmp/pids/server.pid'
 
 # JS
 alias ns='npm run web_server'
