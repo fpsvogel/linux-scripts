@@ -4,7 +4,9 @@
 # By mapping this script to a keyboard shortcut, entering a new row
 # becomes just a matter of filling in a few blank columns.
 
-# Sleep a bit because the shortcut key needs to have been released first.
+# For more on reading.csv, see https://github.com/fpsvogel/reading
+
+# Sleep a bit because the keyboard shortcut needs to have been released first.
 sleep 0.2
 
 # Cut the line/selection, then grab it from the clipboard. Typically this is the
