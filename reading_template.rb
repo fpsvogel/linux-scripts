@@ -27,7 +27,7 @@ start_date = `date +'%Y/%m/%d'`.chomp
 row = "|#{cut}#{source_sep}|#{start_date}|||"
 
 # Output the row to the clipboard, then paste it.
-`echo "#{row}" | xclip -sel clip`
+`echo "#{row}" | xclip -f -selection clipboard`
 sleep 0.05
 `xdotool key "ctrl+v"`
 sleep 0.05
