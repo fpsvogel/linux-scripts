@@ -8,8 +8,6 @@
 # - zsh-syntax-highlighting:
 #     https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 
-eval $(thefuck --alias)
-
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 plugins=(copybuffer copypath copyfile gitfast rake-fast sudo thefuck z zsh-autosuggestions zsh-navigation-tools)
