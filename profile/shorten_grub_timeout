@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Does an inplace (-i) edit of /boot/grub/grub.cfg replacing 30-second with 2-second timeouts, and backs up the original with an extension ".backup.daily".
+
+/home/felipe/.rbenv/shims/ruby -pi.backup.daily -e 'gsub(/^  set timeout=30$/, "  set timeout=2")' /boot/grub/grub.cfg

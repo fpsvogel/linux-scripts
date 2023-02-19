@@ -23,9 +23,9 @@ source "${this_dir}/profile/increase_pointer_speed"
 # Increase mouse scroll speed, fast scroll with Ctrl+scroll, and remap Alt+scroll to Ctrl+scroll.
 source "${this_dir}/profile/increase_scroll_speed"
 
-# TODO: If boot menu timeout reverts to 30s, edit the timeout for efi platform to set timeout=2:
-#   sudo nano /boot/grub/grub.cfg
-# Automate this here if it needs to be re-applied repeatedly.
-# NOTE: To add boot parameters, instead do:
-#   sudo nano /etc/default/grub
-#   sudo update-grub  # or grub-mkconfig -o /boot/grub/grub.cfg
+# Ensure Grub bootloader countdown is set to 2 seconds. (After a system update, the
+# boot config file is regenerated and the countdown reverts to the default 30 seconds.)
+# To prevent .profile from showing an error message about entering a password,
+# run `sudo visudo` and add this line:
+#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/profile/shorten_grub_timeout
+sudo "${this_dir}/profile/shorten_grub_timeout"
