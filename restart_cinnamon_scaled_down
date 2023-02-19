@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Whenever I restart Cinnamon, for some reason it starts with 200% display scaling.
+# This script returns it to 100% and then restarts Cinnamon again (otherwise the
+# mouse pointer speed is lower than normal). I run this script via a keyboard
+# shortcut for convenience.
+
+xrandr --output HDMI-0 --scale 2.0x2.0
+nohup cinnamon --replace &
