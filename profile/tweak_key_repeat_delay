@@ -4,5 +4,5 @@
 # Run this via a keyboard shortcut whenever the repeat delay mysteriously
 # gets longer.
 
-value=$((300+$RANDOM%20))
+value=$((340+$RANDOM%20))
 gsettings set org.cinnamon.desktop.peripherals.keyboard delay $value

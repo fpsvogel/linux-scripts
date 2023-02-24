@@ -9,6 +9,10 @@ alias cpf='copyfile'
 # GIT
 alias g='git'
 alias ga='git add'
+alias gap='git add patch'
+gax () {
+  git add -- . ":!$1"
+}
 alias gb='git branch'
 alias gcb='git_current_branch | xclip -f -selection clipboard'
 alias gbda='git branch | grep -v "main" | xargs git branch -D'
@@ -23,7 +27,7 @@ alias gl='git log --pretty=format:"%C(yellow)%h %C(cyan)%ad %Cgreen%an %Creset%s
 alias gm='git merge'
 alias gpl='git pull'
 alias gp='git push'
-alias gpsup='git push --set-upstream origin $(git_current_branch)'
+alias gpup='git push --set-upstream origin $(git_current_branch)'
 alias grb='git rebase'
 alias grf='git reflog'
 alias gr='git reset'
