@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Disables all wake events besides the power button. This is to stop my cats
+# waking the computer when they walk over the keyboard.
+# From https://bbs.archlinux.org/viewtopic.php?pid=1607915#p1607915
+
+# To prevent .profile from showing an error message about entering a password,
+# run `sudo visudo` and add this line:
+#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/sudo_profile/disable_wake_events
+
+sh -c "echo XHC > /proc/acpi/wakeup"

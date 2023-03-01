@@ -1,5 +1,6 @@
-ruby_path=/home/felipe/.rbenv/shims/ruby
+# Increases mouse pointer speed.
+
 inputs=$(xinput --list --short)
-mouse_id=$(${ruby_path} -e 'puts ARGV[0].match(/Logitech M510\s+id=(\d+)/).captures.first' "${inputs}")
+mouse_id=$(ruby -e 'puts ARGV[0].match(/Logitech M510\s+id=(\d+)/).captures.first' "${inputs}")
 speed=3.0
 xinput set-prop $mouse_id "Coordinate Transformation Matrix" $speed, 0, 0, 0, $speed, 0, 0, 0, 1

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Ensure Grub bootloader countdown is set to 2 seconds. (After a system update, the
+# boot config file is regenerated and the countdown reverts to the default 30 seconds.)
+# Does an inplace (-i) edit of /boot/grub/grub.cfg replacing 30-second with 2-second
+# timeouts, and backs up the original with an extension ".backup.daily".
+
+# To prevent .profile from showing an error message about entering a password,
+# run `sudo visudo` and add this line:
+#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/sudo_profile/shorten_grub_timeout
+
+cp /boot/grub/grub.cfg /boot/grub/grub.cfg.backup.daily
+sed -i 's/^  set timeout=30$/  set timeout=2/g' /boot/grub/grub.cfg

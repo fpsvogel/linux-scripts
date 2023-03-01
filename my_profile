@@ -2,30 +2,6 @@
 # To use, add this line to ~/.profile (assuming this is in "~/scripts"):
 #   source ./scripts/my_profile
 
-# Replace this with the path to this script's directory.
-# I couldn't figure out how to get this script's path in a way that works
-# during login. E.g. $(readlink -f "$0") and `realpath "$_"` return at login.
-this_dir=~/scripts
+for f (~/scripts/profile*/*) source $f
 
-# Disable all wake events besides the power button. This is to stop my cats
-# waking the computer when they walk over the keyboard.
-# To prevent .profile from showing an error message about entering a password,
-# run `sudo visudo` and add this line:
-#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/profile/disable_wake_events
-sudo "${this_dir}/profile/disable_wake_events"
-
-# Set keyboard repeat delay, because sometimes it inexplicably becomes longer.
-source "${this_dir}/profile/tweak_key_repeat_delay"
-
-# Increase mouse pointer speed.
-source "${this_dir}/profile/increase_pointer_speed"
-
-# Increase mouse scroll speed, fast scroll with Ctrl+scroll, and remap Alt+scroll to Ctrl+scroll.
-source "${this_dir}/profile/increase_scroll_speed"
-
-# Ensure Grub bootloader countdown is set to 2 seconds. (After a system update, the
-# boot config file is regenerated and the countdown reverts to the default 30 seconds.)
-# To prevent .profile from showing an error message about entering a password,
-# run `sudo visudo` and add this line:
-#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/profile/shorten_grub_timeout
-sudo "${this_dir}/profile/shorten_grub_timeout"
+for f (~/scripts/sudo_profile*/*) sudo $f

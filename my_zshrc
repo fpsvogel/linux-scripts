@@ -3,13 +3,4 @@
 # with this line (assuming this is in "~/scripts"):
 #   source ~/scripts/my_zshrc
 
-# Get the path to this script's directory.
-this_dir=${0:a:h}
-
-source "${this_dir}/zsh/zsh_plugins"
-
-source "${this_dir}/zsh/init_etc"
-
-source "${this_dir}/zsh/key_bindings"
-
-source "${this_dir}/zsh/aliases"
+for f (~/scripts/zshrc*/*) source $f

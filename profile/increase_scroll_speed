@@ -1,3 +1,7 @@
+# - Increases mouse scroll speed
+# - Makes Ctrl+scroll do a fast scroll
+# - Remaps Alt+scroll to Ctrl+scroll
+
 # Adapted from https://io.bikegremlin.com/11541/linux-mouse-scroll-speed/
 
 cat >~/.imwheelrc<<EOF
