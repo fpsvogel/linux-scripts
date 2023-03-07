@@ -9,7 +9,8 @@ alias cpf='copyfile'
 # GIT
 alias g='git'
 alias ga='git add'
-alias gap='git add patch'
+alias gap='git add --patch'
+# Add all except the file given in the argument.
 gax () {
   git add -- . ":!$1"
 }
