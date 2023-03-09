@@ -55,9 +55,14 @@ alias postgres='psql -U postgres'
 # RUBY
 alias bt='bin/bridgetown'
 
+# RAKE
+alias rt='rake test'
+alias rw='rake warn'
+
 # RAILS
 alias r='rails'
 alias rs='rails s'
+alias rsp='PROFILE=true rails s'
 alias rc='rails c'
 alias rcv='rails c --sandbox'
 alias rmg='rails db:migrate:primary'
