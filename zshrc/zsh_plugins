@@ -10,16 +10,11 @@
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(copybuffer copypath copyfile gitfast rake-fast sudo thefuck z zsh-autosuggestions zsh-navigation-tools)
+plugins=(copybuffer copypath copyfile gitfast rake-fast sudo z zsh-autosuggestions zsh-navigation-tools)
 
 # TODO plugins to try later:
 # - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
 # - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-interactive-cd
-
-# Remap the sudo plugin to F4 F4, to avoid conflict with thefuck plugin.
-bindkey -M emacs '^[OS^[OS' sudo-command-line
-bindkey -M vicmd '^[OS^[OS' sudo-command-line
-bindkey -M viins '^[OS^[OS' sudo-command-line
 
 source $ZSH/oh-my-zsh.sh
 
