@@ -1,6 +1,6 @@
 # My startup scripts.
 # To use, add this line to ~/.profile (assuming this is in "~/scripts"):
-#   source ./scripts/my_profile
+#   source ~/scripts/my_profile
 
 for f in ~/scripts/profile*/*; do source $f; done
 
