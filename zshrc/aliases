@@ -73,11 +73,10 @@ alias gskip='git update-index --skip-worktree config/database.yml'
 alias postgres='psql -U postgres'
 
 # RUBY
-alias bt='bin/bridgetown'
 alias bs='bin/bridgetown start'
 
 # RAKE
-alias rt='rake test'
+alias rt='bundle exec rake test'
 alias rw='rake warn'
 
 # RAILS
@@ -86,8 +85,8 @@ alias rs='rails s'
 alias rsp='PROFILE=true rails s'
 alias rc='rails c'
 alias rcv='rails c --sandbox'
-alias rmg='rails db:migrate:primary'
-alias rmt='rails db:migrate:primary RAILS_ENV=test'
+alias rmg='rails db:migrate' #'rails db:migrate:primary'
+alias rmt='rails db:migrate RAILS_ENV=test'
 rmr () {
   rails db:rollback:primary STEP=$1
 }
