@@ -7,3 +7,5 @@ eval "$(rbenv init -)"
 export EDITOR=code
 
 export PATH="$HOME/.bin:$PATH"
+
+export CDPATH="$HOME:$HOME/code"
