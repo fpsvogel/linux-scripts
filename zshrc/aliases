@@ -1,6 +1,7 @@
 # GENERAL
 alias cl='tput reset'
 alias c='pbcopy' # to copy output to clipboard: echo 'hi' | c
+alias rma='rm -rf *'
 
 # ZSH PLUGINS
 alias cpp='copypath'
@@ -32,8 +33,10 @@ alias gcp='git cherry-pick'
 alias gc='git commit'
 alias gcm='git commit --message'
 alias gca='git commit --amend --no-edit'
+alias gcma='git commit --amend --no-edit'
 alias cm='git add .; git commit --message'
 alias cma='git add .; git commit --amend --no-edit'
+alias gd='git diff'
 alias gl='git log --pretty=format:"%C(yellow)%h %C(cyan)%ad %Cgreen%an %Creset%s%C(brightred)%d" --date=short --graph'
 alias gm='git merge'
 alias gmm='git merge --no-edit main'
@@ -77,10 +80,9 @@ alias bs='bin/bridgetown start'
 
 # RAKE
 alias rt='bundle exec rake test'
-alias rw='rake warn'
 
 # RAILS
-alias r='rails'
+alias r='rspec'
 alias rs='rails s'
 alias rsp='PROFILE=true rails s'
 alias rc='rails c'
