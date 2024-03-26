@@ -1,6 +1,7 @@
 # GENERAL
 alias cl='tput reset'
-alias c='pbcopy' # to copy output to clipboard: echo 'hi' | c
+alias c='xclip -f -selection clipboard' # to copy output to clipboard: echo 'hi' | c
+alias kc='pkill -HUP -f "cinnamon --replace"' # kill and restart Cinnamon
 alias rma='rm -rf *'
 
 # ZSH PLUGINS
@@ -21,7 +22,7 @@ cmsp () {
   git add -- . ':!db/schema.rb'; git add --patch db/schema.rb; git commit --message "$1"; git restore db/schema.rb
 }
 alias gb='git branch'
-alias gbc='git_current_branch | pbcopy'
+alias gbc='git_current_branch | xclip -f -selection clipboard'
 alias gbd='git switch main; git branch -D @{-1}'
 # delete all local branches that have been merged into main
 alias gbda='git branch --merged main | grep -v "main" | xargs -n 1 git branch -d'
@@ -41,7 +42,7 @@ alias gl='git log --pretty=format:"%C(yellow)%h %C(cyan)%ad %Cgreen%an %Creset%s
 alias gm='git merge'
 alias gmm='git merge --no-edit main'
 alias gpl='git pull'
-alias gpr='echo "https://github.com/origami-medical/origami_claims/compare/$(git_current_branch)" | pbcopy'
+alias gpr='echo "https://github.com/origami-medical/origami_claims/compare/$(git_current_branch)" | xclip -f -selection clipboard'
 alias gp='git push'
 alias gpf='git push --force'
 alias gpup='git push --set-upstream origin $(git_current_branch)'
