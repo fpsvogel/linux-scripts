@@ -1,4 +1,4 @@
-# GENERAL
+# MISC.
 alias cl='tput reset'
 alias c='xclip -f -selection clipboard' # to copy output to clipboard: echo 'hi' | c
 alias kc='pkill -HUP -f "cinnamon --replace"' # kill and restart Cinnamon
@@ -9,45 +9,68 @@ alias cpp='copypath'
 alias cpf='copyfile'
 
 # GIT
+# Tip: VS Code keybinding to insert current filename in terminal.
+# Add to keybindings.json, via the command "Preferences: Open Keyboard Shortcuts (JSON)".
+# {
+#   "key": "cmd+shift+b",
+#   "command": "workbench.action.terminal.sendSequence",
+#   "args": { "text": " ${relativeFile}" },
+#   "when": "terminalFocus"
+# },
 alias g='git'
 alias ga='git add'
 alias gap='git add --patch'
-alias gaps='git add --patch db/schema.rb'
-alias gaxs="git add -- . ':!db/schema.rb'"
 # Add all except the file given in the argument.
 gax () {
   git add -- . ":!$1"
 }
-cmsp () {
-  git add -- . ':!db/schema.rb'; git add --patch db/schema.rb; git commit --message "$1"; git restore db/schema.rb
-}
 alias gb='git branch'
-alias gbc='git_current_branch | xclip -f -selection clipboard'
-alias gbd='git switch main; git branch -D @{-1}'
-# delete all local branches that have been merged into main
-alias gbda='git branch --merged main | grep -v "main" | xargs -n 1 git branch -d'
-# delete ALL local branches
-alias gbdaa='git branch | grep -v "main" | xargs git branch -D'
-# or: 'git branch --no-color --merged | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete 2>/dev/null'
+alias gbc='git_current_branch | pbcopy'
+# Catch-all for "master", "main", etc.
+main_branch () {
+  echo ${$(git symbolic-ref refs/remotes/origin/HEAD)##*/}
+}
+# Delete current branch locally.
+alias gbd='git switch $(main_branch); git branch -D @{-1}'
+# or: $(if git cat-file -e refs/heads/master 2>&-; then echo master; elif git cat-file -e refs/heads/main 2>&-; then echo main; fi)
+
+# Delete all local branches that no longer exist on remote.
+alias gbda='git fetch -p && for branch in $(git for-each-ref --format "%(refname) %(upstream:track)" refs/heads | awk '\''$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'\''); do git branch -D $branch; done'
+# or: alias gbda='git fetch -p && for branch in $(git for-each-ref --format "%(refname) %(upstream:track)" refs/heads | awk '"'"'$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'"'"'); do git branch -D $branch; done'
+
+# # Delete all local branches that have been merged into main.
+# # Problem: doesn't work if a branch has been deleted on remote.
+# alias gbda='git branch --merged $(main_branch) | grep -v "$(main_branch)" | xargs -n 1 git branch -d'
+
+# # Delete ALL local branches (probably shouldn't do this).
+# alias gbdaa='git branch | grep -v "$(main_branch)" | xargs git branch -D'
+# # or: 'git branch --no-color --merged | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete 2>/dev/null'
+
+alias gcl='git clone'
+alias gclfd='git clean -fd'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
 alias gc='git commit'
 alias gcm='git commit --message'
+alias gcma='git commit --message'
 alias gca='git commit --amend --no-edit'
-alias gcma='git commit --amend --no-edit'
 alias cm='git add .; git commit --message'
 alias cma='git add .; git commit --amend --no-edit'
 alias ca='git add .; git commit --amend --no-edit'
 alias gd='git diff'
 alias gl='git log --pretty=format:"%C(yellow)%h %C(cyan)%ad %Cgreen%an %Creset%s%C(brightred)%d" --date=short --graph'
-alias gm='git merge'
-alias gmm='git merge --no-edit main'
-alias gpl='git pull'
-alias gpr='echo "https://github.com/origami-medical/origami_claims/compare/$(git_current_branch)" | xclip -f -selection clipboard'
-alias gp='git push'
-alias gpf='git push --force'
-alias gpup='git push --set-upstream origin $(git_current_branch)'
-alias grm='git rebase main'
+# Search for a string in past commits, e.g. gls 'some string'
+alias gls='gl -S'
+# Search for a string in past commits, showing diffs.
+alias glsd='gl -p -S'
+alias gps='git push'
+alias gpsf='git push --force'
+alias gp='git pull'
+alias gpr='gwm; git pull; gw -; git rebase $(main_branch)'
+# # Unnecessary after git config --global push.autoSetupRemote true
+# alias gpup='git push --set-upstream origin $(git_current_branch)'
+alias grm='git rebase $(main_branch)'
+# Interactively rebase the last n commits, e.g. gr 5
 gr () {
   git rebase -i "HEAD~$1"
 }
@@ -59,26 +82,24 @@ alias grh='git reset HEAD~'
 alias grha='git reset --hard'
 alias gro='git restore'
 alias gros='git restore db/schema.rb'
-alias grosm='git restore --source main db/schema.rb'
-alias grom='git restore --source main'
+alias grosm='git restore --source $(main_branch) db/schema.rb'
+alias grom='git restore --source $(main_branch)'
 alias grv='git revert --no-edit'
 alias gst='git stash --include-untracked'
 alias gsp='git stash pop'
-alias gsa='git stash apply'
 alias gsl='git stash list'
 alias gss='git stash show'
 alias gssp='git stash show -p'
 alias gs='git status'
 alias gw='git switch'
 alias gwc='git switch --create'
-alias gwm='git switch main'
-alias gt='git tag'
-alias gskip='git update-index --skip-worktree config/database.yml'
+alias gwm='git switch $(main_branch)'
 
 # POSTGRES
 alias postgres='psql -U postgres'
 
 # RUBY
+alias bt='bin/bridgetown'
 alias bs='bin/bridgetown start'
 
 # RAKE
@@ -90,25 +111,25 @@ alias rs='rails s'
 alias rsp='PROFILE=true rails s'
 alias rc='rails c'
 alias rcv='rails c --sandbox'
-alias rmg='rails db:migrate' #'rails db:migrate:primary'
+alias rmg='rails db:migrate RAILS_ENV=development'
 alias rmt='rails db:migrate RAILS_ENV=test'
 rmr () {
-  rails db:rollback:primary STEP=$1
+  rails db:rollback STEP=$1
 }
 rmrt () {
-  rails db:rollback:primary RAILS_ENV=test STEP=$1
+  rails db:rollback RAILS_ENV=test STEP=$1
 }
 rmd () {
-  rails db:migrate:down:primary VERSION=$1
+  rails db:migrate:down VERSION=$1
 }
 rmdt () {
-  rails db:migrate:down:primary RAILS_ENV=test VERSION=$1
+  rails db:migrate:down RAILS_ENV=test VERSION=$1
 }
 rmu () {
-  rails db:migrate:up:primary VERSION=$1
+  rails db:migrate:up VERSION=$1
 }
 rmut () {
-  rails db:migrate:up:primary RAILS_ENV=test VERSION=$1
+  rails db:migrate:up RAILS_ENV=test VERSION=$1
 }
 alias rlog='tail -f log/development.log'
 alias -g rev='RAILS_ENV=development'
@@ -116,21 +137,14 @@ alias -g rep='RAILS_ENV=production'
 alias -g ret='RAILS_ENV=test'
 alias sp='rm tmp/pids/server.pid'
 alias rkill='lsof -nti :3000 | xargs kill -9; lsof -nti :4000 | xargs kill -9'
-alias ra='rackup'
 alias b='bundle'
 
-# JS
-alias ns='npm run web_server --scripts-prepend-node-path'
-
 # Exercism
-# Run tests for the latest Ruby exercise
+# Run tests for the latest Ruby exercise.
 alias xt='ruby $(ls -td -- */ | head -n 1)*_test.rb'
-# Submit the latest Ruby exercise
+# Submit the latest Ruby exercise.
 alias xs='exercism submit $(find $(ls -td -- */ | head -n 1 | cut -d"/" -f1) -name "*.rb" ! -name "*_test.rb")'
-# Same as above two, but for Lua
-# alias zt='cd $(ls -td -- */ | head -n 1); lua *_spec.lua; cd ..'
-alias zt='cd $(ls -td -- */ | head -n 1); busted; cd ..'
-alias zs='exercism submit $(find $(ls -td -- */ | head -n 1 | cut -d"/" -f1) -name "*.lua" ! -name "*_spec.lua")'
+
 
 # DragonRuby Game Toolkit
 alias dr='./dragonruby'
