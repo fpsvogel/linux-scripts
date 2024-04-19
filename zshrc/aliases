@@ -140,6 +140,10 @@ alias rkill='lsof -nti :3000 | xargs kill -9; lsof -nti :4000 | xargs kill -9'
 alias b='bundle'
 
 # Exercism
+# Download a Ruby exercise.
+xd () {
+  exercism download --track=ruby --exercise=$1
+}
 # Run tests for the latest Ruby exercise.
 alias xt='ruby $(ls -td -- */ | head -n 1)*_test.rb'
 # Submit the latest Ruby exercise.
