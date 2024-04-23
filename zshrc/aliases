@@ -63,10 +63,11 @@ alias gl='git log --pretty=format:"%C(yellow)%h %C(cyan)%ad %Cgreen%an %Creset%s
 alias gls='gl -S'
 # Search for a string in past commits, showing diffs.
 alias glsd='gl -p -S'
-alias gps='git push'
-alias gpsf='git push --force'
-alias gp='git pull'
-alias gpr='gwm; git pull; gw -; git rebase $(main_branch)'
+alias gp='git push'
+alias gpf='git push --force'
+alias gpl='git pull'
+alias gplr='gwm; git pull; gw -; git rebase $(main_branch)'
+alias pr='echo "https://github.com/kin/dot-com/compare/$(git_current_branch)" | pbcopy'
 # # Unnecessary after git config --global push.autoSetupRemote true
 # alias gpup='git push --set-upstream origin $(git_current_branch)'
 alias grm='git rebase $(main_branch)'
@@ -92,6 +93,7 @@ alias gss='git stash show'
 alias gssp='git stash show -p'
 alias gs='git status'
 alias gw='git switch'
+alias gw-='git switch -'
 alias gwc='git switch --create'
 alias gwm='git switch $(main_branch)'
 
