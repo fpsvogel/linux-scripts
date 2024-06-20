@@ -171,3 +171,7 @@ function xs () {
 
 # DragonRuby Game Toolkit
 alias dr='./dragonruby'
+
+# Haskell
+alias cr='cabal run'
+alias ct='cabal run test:tests'

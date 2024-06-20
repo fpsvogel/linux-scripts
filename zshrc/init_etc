@@ -4,6 +4,8 @@
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+[ -f "/home/felipe/.ghcup/env" ] && . "/home/felipe/.ghcup/env" # ghcup-env
+
 export EDITOR=code
 
 export PATH="$HOME/.bin:$PATH"
