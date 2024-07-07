@@ -1,9 +1,14 @@
 # The kitchen sink. For miscellaneous things like initializing processes
 # (other than Zsh plugins), adding to PATH, etc.
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# should be in ~/.zshenv instead
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
+# # Make sure gchup precedes cabal in PATH so that ghcup's cabal version takes effect.
+# # e.g. grab the "head" link in Cabal's pre-releases on GitHub, and:
+# # ghcup --no-cache install cabal -u 'https://github.com/haskell/cabal/releases/download/cabal-head/cabal-head-Linux-static-x86_64.tar.gz' 3.13.0.0-prerelease
+# export PATH="$HOME/.ghcup/bin:$PATH"
 [ -f "/home/felipe/.ghcup/env" ] && . "/home/felipe/.ghcup/env" # ghcup-env
 
 export EDITOR=code
