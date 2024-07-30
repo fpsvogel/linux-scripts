@@ -49,11 +49,11 @@ alias gbda='git fetch -p && for branch in $(git for-each-ref --format "%(refname
 alias gcl='git clone'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
-alias gc='git commit'
-alias gcm='git commit --message'
+alias gc='git commit --allow-empty-message --message'
+alias gcm='git commit --allow-empty-message --message'
 alias gcma='git commit --amend --no-edit'
 alias gca='git commit --amend --no-edit'
-alias cm='git add .; git commit --message'
+alias cm='git add .; git commit --allow-empty-message --message'
 alias cma='git add .; git commit --amend --no-edit'
 alias ca='git add .; git commit --amend --no-edit'
 alias gd='git diff'
@@ -95,7 +95,22 @@ alias gsl='git stash list'
 alias gss='git stash show'
 alias gssp='git stash show -p'
 alias gs='git status'
-alias gw='git switch'
+gw () {
+  output=$(git branch -a | grep -v remotes | grep -i $1 | head -n 1 | xargs)
+
+  # If a local branch includes the argument, switch to it.
+  if [ -n "$output" ]; then
+    git switch $output
+  # Else, if the argument contains "/" then try to directly `git switch` to it.
+  elif echo "$output" | grep -q '/'; then
+    git switch $1
+  # Otherwise, get a branch name from git that includes the argument, and remove "origin/" from the beginning.
+  else
+    branch=$(git branch -a | grep -i $1 | head -n 1 | xargs)
+    branch=${branch#remotes/origin/}
+    git switch $branch
+  fi
+}
 alias gw-='git switch -'
 alias gwc='git switch --create'
 alias gwm='git switch $(main_branch)'
@@ -120,6 +135,8 @@ alias rsp='PROFILE=true rails s'
 alias rc='rails c'
 alias rcv='rails c --sandbox'
 alias rmg='rails db:migrate RAILS_ENV=development'
+alias rmp='rails db:test:prepare'
+alias rmgp='rails db:test:prepare'
 alias rmt='rails db:migrate RAILS_ENV=test'
 alias rmgt='rails db:migrate RAILS_ENV=test'
 rmr () {
