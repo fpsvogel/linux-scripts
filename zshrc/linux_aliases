@@ -1,0 +1,2 @@
+alias c='xclip -f -selection clipboard' # to copy output to clipboard: echo 'hi' | c
+alias kc='pkill -HUP -f "cinnamon --replace"' # kill and restart Cinnamon
