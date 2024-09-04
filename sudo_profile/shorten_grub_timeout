@@ -7,7 +7,7 @@
 
 # To prevent .profile from showing an error message about entering a password,
 # run `sudo visudo` and add this line:
-#   felipe ALL=(ALL) NOPASSWD: /home/felipe/scripts/sudo_profile/shorten_grub_timeout
+#   felipe ALL=(ALL) NOPASSWD: /home/felipe/dotfiles/sudo_profile/shorten_grub_timeout
 
 cp /boot/grub/grub.cfg /boot/grub/grub.cfg.backup.daily
 sed -i 's/^  set timeout=30$/  set timeout=2/g' /boot/grub/grub.cfg

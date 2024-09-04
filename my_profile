@@ -1,7 +1,7 @@
 # My startup scripts.
-# To use, add this line to ~/.profile (assuming this is in "~/scripts"):
-#   source ~/scripts/my_profile
+# To use, add this line to ~/.profile (assuming the present directory is "~/dotfiles"):
+#   source ~/dotfiles/my_profile
 
-for f in ~/scripts/profile*/*; do source $f; done
+for f in ~/dotfiles/profile*/*; do source $f; done
 
-for f in ~/scripts/sudo_profile*/*; do sudo $f; done
+for f in ~/dotfiles/sudo_profile*/*; do sudo $f; done
